@@ -1,0 +1,48 @@
+const Projects = [
+    {
+        id: 1,
+        title: "E-Commerce Website",
+        category: "Web",
+        image: "/images/portfolio/portfolio-1.jpg",
+        description: "A modern online store built with React & Node.js",
+        liveDemo: "https://example.com/live-demo-1",
+        sourceCode: "https://github.com/example/repo-1",
+    },
+    {
+        id: 2,
+        title: "Mobile App UI",
+        category: "Design",
+        image: "/images/portfolio/portfolio-2.jpg",
+        description: "Figma prototype for a finance mobile app",
+        liveDemo: "https://example.com/live-demo-2",
+        sourceCode: "https://github.com/example/repo-2",
+    },
+    {
+        id: 3,
+        title: "Portfolio Website",
+        category: "Web",
+        image: "/images/portfolio/portfolio-3.jpg",
+        description: "Personal portfolio using React + Tailwind",
+        liveDemo: "https://example.com/live-demo-1",
+        sourceCode: "https://github.com/example/repo-1",
+    },
+    {
+        id: 4,
+        title: "Mobile App UI",
+        category: "Design",
+        image: "/images/portfolio/portfolio-2.jpg",
+        description: "Figma prototype for a finance mobile app",
+        liveDemo: "https://example.com/live-demo-1",
+        sourceCode: "https://github.com/example/repo-1",
+    },
+    {
+        id: 5,
+        title: "Portfolio Website",
+        category: "Web",
+        image: "/images/portfolio/portfolio-3.jpg",
+        description: "Personal portfolio using React + Tailwind",
+        liveDemo: "https://example.com/live-demo-1",
+        sourceCode: "https://github.com/example/repo-1",
+    },
+];
+export { Projects };
