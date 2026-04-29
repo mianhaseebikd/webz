@@ -8,6 +8,7 @@ import Timeline from './components/timeline.jsx';
 import Skill from './components/skill.jsx';
 import Portfolio from './components/portfolio.jsx';
 import Services from './components/services.jsx';
+import Testimonial from './components/testimonial.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -18,5 +19,6 @@ createRoot(document.getElementById('root')).render(
     <Portfolio />
     <Skill />
     <Services />
+    <Testimonial />
   </StrictMode>
 );

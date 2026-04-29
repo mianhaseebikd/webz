@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export function TiltWrapper({ children, className = "" }) {
+export function TiltWrapper({ children, className = "", onClick }) {
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -32,6 +32,7 @@ export function TiltWrapper({ children, className = "" }) {
     <div
       ref={cardRef}
       className={className}
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
         style={{ cursor: 'pointer' }}

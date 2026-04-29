@@ -55,11 +55,18 @@ p {
     color: var(--text);
 }
 
+#root {
+    max-width: 100%;
+    min-height: 100vh;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     font-size: 17px;
     box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .header-container {
@@ -73,7 +80,8 @@ body {
 
 .navigation-bar {
     display: flex;
-    width: 82%;
+    width: 100%;
+    max-width: 1170px;
     height: 50px;
     margin: auto;
     justify-content: space-between;
@@ -102,8 +110,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 85;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 9998;
     display: none;
 }
 
@@ -118,6 +126,11 @@ body {
     border: none;
     background: none;
     cursor: pointer;
+}
+
+/* Mobile nav hidden on desktop, shown only inside media query */
+.mobile-nav {
+    display: none !important;
 }
 
 .menu-btn span {
@@ -210,19 +223,29 @@ body {
     transition: all 0.3s ease-out;
     top: -1px;
     z-index: -4;
-    /* border-radius: 50px; */
     border: 2px solid var(--first);
     left: -1px;
     transform: translateY(100%);
 }
 
-.button:hover::before {
+.button:hover, .btn-fill {
+    color: var(--white);
+}
+
+
+.btn-fill:hover {
+    color: var(--first);
+}
+
+.btn-fill::before, .button:hover::before {
     transform: translateY(0);
 }
 
-.button:hover {
-    color: var(--white);
+.btn-fill:hover::before {
+    transform: translateY(100%);
 }
+
+
 
 
 /* hero section css start here  */
@@ -242,7 +265,8 @@ body {
 }
 
 .row80 {
-    width: 82%;
+    width: 100%;
+    max-width: 1170px;
     height: auto;
     box-sizing: border-box;
     position: relative;
@@ -264,7 +288,6 @@ body {
     transform: translateY(-40px);
     transition: all 0.6s ease-out;
     position: relative;
-    z-index: 1000;
 }
 
 .header-container.show {
@@ -487,7 +510,8 @@ body {
 }
 
 .row-3 {
-    width: 82%;
+    width: 100%;
+    max-width: 1170px;
     height: auto;
     box-sizing: border-box;
     position: relative;
@@ -615,7 +639,8 @@ body {
 
 .timeline-row {
     display: flex;
-    width: 82%;
+    width: 100%;
+    max-width: 1170px;
     height: auto;
     justify-content: space-between;
     gap: 30px;
@@ -871,6 +896,8 @@ body {
 /* Skill Progress Style  */
 .skill-wrapper {
     width: 100%;
+    max-width: 100%;
+    overflow: clip;
     position: relative;
     height: auto;
     padding: 40px 0px 0px;
@@ -1037,7 +1064,8 @@ body {
 }
 
 .gallery {
-    width: 80%;
+    width: 100%;
+    max-width: 1170px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 25px;
@@ -1112,7 +1140,7 @@ body {
 .modal-content {
     background: #fff;
     padding: 20px;
-    max-width: 600px;
+    max-width: 750px;
     max-height: 85vh;
     min-height: 400px;
     overflow-y: auto;
@@ -1159,6 +1187,17 @@ body {
     margin: 15px 0px 20px;
     padding-bottom: 10px;
     border-bottom: 3px solid #ddd;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.wa-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px;
 }
 
 .underLine {
@@ -1266,32 +1305,50 @@ body {
 
 .service-icon {
     width: 100px;
+    display: flex;
     height: 100px;
     background-color: var(--first);
+    justify-content: center;
+    align-items: center;
 }
 
 .services-content {
     width: calc(100% - 140px);
 }
-.services-content h3{
+
+.services-content h3 {
     font-size: 25px;
     font-family: 'jost';
+    margin-bottom: 5px;
+}
+
+.price-text {
+    font-weight: 600;
+    font-size: 18px;
+    color: #000;
     margin-bottom: 15px;
 }
-.services-content p{
+
+.price-text span {
+    font-size: 22px;
+    color: #f75023;
+}
+
+.services-content p {
     line-height: 1.6;
-}   
+}
 
-
-
-
-
-
-
-
-
-
-
+/* Services Section Style Starts Here */
+.review-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0px;
+    background: url('/images/services-bg1.webp') top right no-repeat;
+}
 
 
 
@@ -1300,83 +1357,108 @@ body {
 
 @media (max-width: 700px) {
 
+    /* Hide desktop nav on mobile */
+    .navigation-bar>nav {
+        display: none !important;
+    }
+
+    /* Show hamburger button */
     .menu-btn {
         display: flex;
-
-        &:hover span {
-            background-color: var(--first);
-        }
+        position: relative;
+        z-index: 10000;
+        background: transparent;
+        border: 2px solid var(--first);
+        border-radius: 8px;
+        padding: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
 
-    /* Mobile Menu Overlay */
-    .header-container::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        z-index: 85;
-        pointer-events: none;
+    .menu-btn:hover span {
+        background-color: var(--first);
     }
 
-    .header-container.menu-open::before {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-    }
-
-    nav {
+    /* Mobile nav styling */
+    .mobile-nav {
+        display: flex !important;
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0.8);
-        background: #fff;
+        transform: translate(-50%, -50%) scale(0.9);
+        background: rgb(255 255 255 / 95%);
+        backdrop-filter: blur(13px);
+        border: 1px solid rgb(255, 255, 255);
         flex-direction: column;
         width: 85%;
         max-width: 400px;
-        padding: 40px 20px;
+        padding: 50px 20px 30px;
         height: auto;
         max-height: 80vh;
         justify-content: flex-start !important;
         transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-        z-index: 95;
-        border-radius: 10px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
         overflow-y: auto;
+        overflow-x: hidden;
         opacity: 0;
         visibility: hidden;
+        pointer-events: none;
     }
 
-    nav.menu-active {
+    .mobile-nav.menu-active {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         visibility: visible;
+        pointer-events: all;
     }
 
-    nav a {
-        margin: 10px 0;
+    .mobile-nav a {
+        margin: 8px 0 !important;
         display: block;
         text-align: center;
         font-size: 16px !important;
+        padding: 8px 0;
     }
 
-    nav a:not(:last-child)::after {
+    .mobile-nav a:not(:last-child)::after {
         display: none;
     }
 
-    nav .button {
+    .mobile-nav .button {
         width: 100%;
-        margin: 20px 0 !important;
+        margin: 20px 0 0 0 !important;
         display: block;
     }
 
-    .navigation-bar nav .button {
-        margin-top: 40px;
+    .mobile-nav-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: var(--first);
+        color: #fff;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: all 0.2s ease;
+    }
+
+    .mobile-nav-close:hover {
+        background: #d43e1f;
+        transform: rotate(90deg);
+    }
+
+    .navigation-bar {
+        width: 100%;
+        padding: 0 10px;
     }
 
     .inner-box .name {
@@ -1468,12 +1550,21 @@ body {
     }
 
     .mouse-wheel {
-        bottom: 40px !important;
+        bottom: 10px !important;
     }
 
     .about-content,
     .skill-content {
         padding: 0px;
+    }
+
+    .gallery-item .content-holder h3 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .gallery-item .content-holder {
+        padding: 12px;
     }
 
     /* Services Mobile Responsive */
@@ -1514,12 +1605,30 @@ body {
         margin-bottom: 10px;
     }
 
-    .services-content p {
-        font-size: 14px;
+    p {
+        font-size: 15px;
     }
 
     .services-wrapper .containers-heading {
         width: 100%;
         padding: 20px;
     }
+
+    .orange-text {
+        font-size: 18px;
+    }
+
+    .containers-heading h2, .headind-2, .timeline-head>h3 {
+        font-size: 28px;
+    }
+
+    .modal-content h2, .tcontent-box h3 {
+        font-size: 22px;
+    }
+
+    .tcontent-box span {
+        font-size: 14px;
+        margin-bottom: -4px;
+    }
+
 }
